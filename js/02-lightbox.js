@@ -18,4 +18,10 @@ function creatingGallery(items) {
 const galleryMarkup = creatingGallery(galleryItems);
 galleryList.insertAdjacentHTML('afterbegin', galleryMarkup);
 
-let lightbox = new SimpleLightbox('.gallery a', {captionSelector: 'img', captionType: 'attr', captionsData: 'alt', captionDelay: 250, captionPosition: 'bottom'});
+let lightbox = new SimpleLightbox('.gallery a', {
+    captionSelector: 'img',
+    captionType: 'attr',
+    captionsData: 'alt',
+    captionDelay: 250,
+    captionPosition: 'bottom'
+});

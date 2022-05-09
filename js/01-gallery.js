@@ -29,21 +29,24 @@ function openModal(evt) {
     evt.preventDefault();
 
     const urlOriginal = evt.target.dataset.source;
-    const instance = basicLightbox.create(`
-        <img width="1400" height="900" src="${urlOriginal}">
-    `);
 
-    instance.show();
+    if (urlOriginal) {
+        const instance = basicLightbox.create(`
+            <img width="1400" height="900" src="${urlOriginal}">
+        `, {
+            onShow: () => window.addEventListener("keydown", onEscapePress),
+            onClose: () => window.removeEventListener("keydown", onEscapePress)
+        });
 
-    if (instance.visible()) {
-        window.addEventListener('keydown', onEscapePress);
-    }
+        instance.show();
 
-    function onEscapePress(event) {
-        if (event.key === 'Escape') {
-            instance.close();
+        function onEscapePress(event) {
+            if (event.key === 'Escape') {
+                instance.close();
+            }
         }
     }
+
 }
 
 
